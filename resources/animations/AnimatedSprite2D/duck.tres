@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bim52wm8wlq4p"]
+
+[ext_resource type="Texture2D" uid="uid://dt55tw5dumdwu" path="res://sprites/characters/duck/DuckIdle1.png" id="1_emr75"]
+[ext_resource type="Texture2D" uid="uid://cx21a7jyc5xsd" path="res://sprites/characters/duck/DuckWalk1.png" id="2_emj6c"]
+[ext_resource type="Texture2D" uid="uid://bphhvyv6tuqe" path="res://sprites/characters/duck/DuckWalk2.png" id="3_bv62m"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emr75")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emr75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_emj6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bv62m")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]

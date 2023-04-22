@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cxqodcj5oubyb"]
+
+[ext_resource type="Texture2D" uid="uid://xvpq0nqt7gwp" path="res://sprites/characters/plankton/PlanktonIdle.png" id="1_mpgk7"]
+[ext_resource type="Texture2D" uid="uid://b3pht2hrfo3q6" path="res://sprites/characters/plankton/PlanktonWalk1.png" id="2_tuta2"]
+[ext_resource type="Texture2D" uid="uid://pekuhuc6gbsi" path="res://sprites/characters/plankton/PlanktonWalk2.png" id="3_omfhd"]
+[ext_resource type="Texture2D" uid="uid://ch7bbfo8k4smp" path="res://sprites/characters/plankton/PlanktonWalk3.png" id="4_es6s5"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mpgk7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tuta2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_omfhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_es6s5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
