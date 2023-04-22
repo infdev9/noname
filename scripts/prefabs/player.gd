@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+@export_enum("Duck", "Plankton") var type: String = "Duck"
+# just for debug
+
 enum States {
 	IDLE,
 	WALK_H,
@@ -14,6 +17,13 @@ enum States {
 const SPEED: float = 300.0
 
 var current_state = States.IDLE
+
+
+func _enter_tree():
+	if type == "Duck":
+		%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/duck.tres"))
+	elif type == "Plankton":
+		%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
 
 
 func _physics_process(_delta):
@@ -38,12 +48,12 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 
-func change_state(state: States):
+func change_state(state: States) -> void:
 	current_state = state
 	update_animation()
 
 
-func update_animation():
+func update_animation() -> void:
 	match current_state:
 		States.IDLE:
 			%AnimationPlayer.play("player_movement/idle")
@@ -52,7 +62,7 @@ func update_animation():
 			flip_sprite()
 
 
-func flip_sprite():
+func flip_sprite() -> void:
 	if velocity.x < 0:
 		%Sprite.set_flip_h(true)
 	if velocity.x > 0:

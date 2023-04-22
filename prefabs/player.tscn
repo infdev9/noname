@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu85flpb6i2s8"]
+[gd_scene load_steps=8 format=3 uid="uid://bu85flpb6i2s8"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/player.gd" id="1_1w5mm"]
 [ext_resource type="SpriteFrames" uid="uid://bim52wm8wlq4p" path="res://resources/animations/AnimatedSprite2D/duck.tres" id="2_rob4n"]
 [ext_resource type="AnimationLibrary" uid="uid://2kf2nyatiu40" path="res://resources/animations/player_movement.res" id="3_4sqro"]
+[ext_resource type="Texture2D" uid="uid://buj1tuplxwldw" path="res://sprites/weapons/sniper/idle.png" id="4_0etx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ay0p"]
-size = Vector2(240, 336)
+size = Vector2(120, 168)
 
 [sub_resource type="Animation" id="Animation_gx77m"]
 length = 0.001
@@ -28,25 +29,31 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(1, 0)
+position = Vector2(0, 1)
 motion_mode = 1
 script = ExtResource("1_1w5mm")
+type = "Plankton"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 24)
+position = Vector2(4, 12)
 shape = SubResource("RectangleShape2D_3ay0p")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(8, 0)
-skew = -0.00640059
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_rob4n")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="DeathParticles" type="GPUParticles2D" parent="."]
 editor_description = "VIP"
+visible = false
 position = Vector2(0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -54,3 +61,11 @@ libraries = {
 "": SubResource("AnimationLibrary_iox2t"),
 "player_movement": ExtResource("3_4sqro")
 }
+
+[node name="WeaponPlaceholder" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9.99999, 40)
+rotation = 0.174533
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("4_0etx2")
+flip_h = true

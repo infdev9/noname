@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="potom_pridumaem"
-run/main_scene="res://prefabs/player.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Root="*res://scripts/Root.gd"
 
 [display]
 
