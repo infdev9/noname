@@ -1,10 +1,6 @@
 res://prefabs/player.tscn
 res://scenes/menu.tscn
-res://scenes/mmenu.tscn
-res://scripts/ui/menu.gd
-res://scripts/ui/glitch.gd
-res://scripts/Root.gd
-res://scripts/prefabs/player.gd
 res://scenes/game.tscn
-res://resources/animations/AnimatedSprite2D/duck.tres
-res://resources/animations/AnimatedSprite2D/plankton.tres
+res://scripts/prefabs/player.gd
+res://scripts/camera.gd
+res://scripts/Root.gd

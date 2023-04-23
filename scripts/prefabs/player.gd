@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export_enum("Duck", "Plankton") var type: String = "Duck"
+@export_enum("Duck", "Plankton") var skin: String = "Duck"
 # just for debug
 
 enum States {
@@ -16,18 +16,18 @@ enum States {
 
 const SPEED: float = 300.0
 
-var current_state = States.IDLE
+var current_state := States.IDLE
 
 
-func _enter_tree():
-	if type == "Duck":
+func _enter_tree() -> void:
+	if skin == "Duck":
 		%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/duck.tres"))
-	elif type == "Plankton":
+	elif skin == "Plankton":
 		%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
 
 
-func _physics_process(_delta):
-	var direction: Vector2 = Vector2(Input.get_axis("left", "right"), 
+func _physics_process(_delta: float) -> void:
+	var direction := Vector2(Input.get_axis("left", "right"), 
 			Input.get_axis("up", "down"))
 	
 	if direction.x:

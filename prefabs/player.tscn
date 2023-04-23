@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu85flpb6i2s8"]
+[gd_scene load_steps=8 format=3 uid="uid://4ygbegbyyfth"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/player.gd" id="1_1w5mm"]
 [ext_resource type="SpriteFrames" uid="uid://bim52wm8wlq4p" path="res://resources/animations/AnimatedSprite2D/duck.tres" id="2_rob4n"]
@@ -32,7 +32,6 @@ _data = {
 position = Vector2(0, 1)
 motion_mode = 1
 script = ExtResource("1_1w5mm")
-type = "Plankton"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 12)
@@ -50,10 +49,6 @@ autoplay = "idle"
 editor_description = "VIP"
 visible = false
 position = Vector2(0, 1)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
