@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 	var player_pos: Vector2 = %Player.get_global_position()
 	var direction: Vector2 = get_global_position().direction_to(get_viewport().get_mouse_position())
 
-	target_pos = player_pos + direction * Root.TILE_SIZE
+	target_pos = player_pos + direction * GLOBAL.TILE_SIZE
 
 	tween.kill()
 	tween = create_tween()
