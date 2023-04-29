@@ -14,7 +14,10 @@ animations = [{
 "name": &"idle",
 "speed": 0.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d63kx")
+}],
 "loop": false,
 "name": &"idle_up",
 "speed": 0.0
@@ -33,8 +36,17 @@ animations = [{
 "name": &"walk",
 "speed": 8.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d63kx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kuwdh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_df4lh")
+}],
 "loop": true,
 "name": &"walk_up",
-"speed": 5.0
+"speed": 8.0
 }]

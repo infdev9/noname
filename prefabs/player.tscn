@@ -35,7 +35,6 @@ z_index = 1
 position = Vector2(0, 1)
 motion_mode = 1
 script = ExtResource("1_1w5mm")
-skin = "Plankton"
 weapon = "Shotgun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -47,7 +46,7 @@ unique_name_in_owner = true
 position = Vector2(8, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_rob4n")
-animation = &"idle"
+animation = &"walk_up"
 autoplay = "idle"
 
 [node name="DeathParticles" type="GPUParticles2D" parent="."]
