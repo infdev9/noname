@@ -1,3 +1,4 @@
 res://scenes/game.tscn
 res://scenes/menu.tscn
 res://prefabs/player.tscn
+res://scripts/ui/menu.gd
