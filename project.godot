@@ -28,7 +28,7 @@ window/size/mode=3
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://sprites/ui/cursor.png"
+mouse_cursor/custom_image="res://assets/sprites/ui/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [importer_defaults]
@@ -42,7 +42,7 @@ texture={
 "compress/normal_map": 0,
 "detect_3d/compress_to": 0,
 "mipmaps/generate": false,
-"mipmaps/limit": -1,
+"mipmaps/limit": 256,
 "process/fix_alpha_border": true,
 "process/hdr_as_srgb": false,
 "process/hdr_clamp_exposure": false,

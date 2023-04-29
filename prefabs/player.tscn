@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://4ygbegbyyfth"]
+[gd_scene load_steps=10 format=3 uid="uid://dy8lsqwd8gaip"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/player.gd" id="1_1w5mm"]
-[ext_resource type="SpriteFrames" uid="uid://bim52wm8wlq4p" path="res://resources/animations/AnimatedSprite2D/duck.tres" id="2_rob4n"]
+[ext_resource type="SpriteFrames" uid="uid://duh6cnqu28pld" path="res://resources/animations/AnimatedSprite2D/duck.tres" id="2_rob4n"]
 [ext_resource type="AnimationLibrary" uid="uid://2kf2nyatiu40" path="res://resources/animations/player_movement.res" id="3_4sqro"]
-[ext_resource type="Texture2D" uid="uid://buj1tuplxwldw" path="res://sprites/weapons/sniper/idle.png" id="4_0etx2"]
+[ext_resource type="Texture2D" uid="uid://cqpstckyxih2l" path="res://assets/sprites/weapons/plasmaSniper.png" id="4_btyo0"]
+[ext_resource type="Texture2D" uid="uid://6sqj67llme6m" path="res://assets/sprites/weapons/plasmaRifle.png" id="5_0f1ln"]
+[ext_resource type="Texture2D" uid="uid://t20oc4xb3u21" path="res://assets/sprites/weapons/plasmaShotgun.png" id="6_aa7bs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ay0p"]
 size = Vector2(120, 168)
@@ -29,9 +31,12 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 position = Vector2(0, 1)
 motion_mode = 1
 script = ExtResource("1_1w5mm")
+skin = "Plankton"
+weapon = "Shotgun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 12)
@@ -42,7 +47,7 @@ unique_name_in_owner = true
 position = Vector2(8, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_rob4n")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="DeathParticles" type="GPUParticles2D" parent="."]
@@ -57,10 +62,23 @@ libraries = {
 "player_movement": ExtResource("3_4sqro")
 }
 
-[node name="WeaponPlaceholder" type="Sprite2D" parent="."]
+[node name="Sniper" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(9.99999, 40)
-rotation = 0.174533
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("4_0etx2")
-flip_h = true
+position = Vector2(6, 35)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_btyo0")
+offset = Vector2(84, 0)
+
+[node name="Rifle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(6, 35)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_0f1ln")
+offset = Vector2(84, 0)
+
+[node name="Shotgun" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(6, 35)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_aa7bs")
+offset = Vector2(84, 0)

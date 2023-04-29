@@ -1,30 +1,40 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bim52wm8wlq4p"]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://duh6cnqu28pld"]
 
-[ext_resource type="Texture2D" uid="uid://dt55tw5dumdwu" path="res://sprites/characters/duck/DuckIdle1.png" id="1_emr75"]
-[ext_resource type="Texture2D" uid="uid://cx21a7jyc5xsd" path="res://sprites/characters/duck/DuckWalk1.png" id="2_emj6c"]
-[ext_resource type="Texture2D" uid="uid://bphhvyv6tuqe" path="res://sprites/characters/duck/DuckWalk2.png" id="3_bv62m"]
+[ext_resource type="Texture2D" uid="uid://dt55tw5dumdwu" path="res://assets/sprites/characters/duck/DuckIdle1.png" id="1_d63kx"]
+[ext_resource type="Texture2D" uid="uid://cx21a7jyc5xsd" path="res://assets/sprites/characters/duck/DuckWalk1.png" id="2_kuwdh"]
+[ext_resource type="Texture2D" uid="uid://bphhvyv6tuqe" path="res://assets/sprites/characters/duck/DuckWalk2.png" id="3_df4lh"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_emr75")
+"texture": ExtResource("1_d63kx")
 }],
 "loop": false,
 "name": &"idle",
 "speed": 0.0
 }, {
+"frames": [],
+"loop": false,
+"name": &"idle_up",
+"speed": 0.0
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_emr75")
+"texture": ExtResource("1_d63kx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_emj6c")
+"texture": ExtResource("2_kuwdh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_bv62m")
+"texture": ExtResource("3_df4lh")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
 }]

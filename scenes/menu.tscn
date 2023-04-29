@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy02h55wxna4u"]
+[gd_scene load_steps=7 format=3 uid="uid://cjjnbpmhj114o"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_c1txc"]
-[ext_resource type="Texture2D" uid="uid://b24hwytdvci7s" path="res://sprites/ui/tv.png" id="1_ixv5f"]
+[ext_resource type="Texture2D" uid="uid://b24hwytdvci7s" path="res://assets/sprites/ui/tv.png" id="2_033q5"]
 [ext_resource type="Script" path="res://scripts/ui/glitch.gd" id="3_on8ww"]
+[ext_resource type="FontFile" uid="uid://ctyrtv8lxstyl" path="res://assets/fonts/font.ttf" id="4_h2am2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uiqju"]
 noise_type = 3
@@ -30,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ixv5f")
+texture = ExtResource("2_033q5")
 
 [node name="Glitch" type="TextureRect" parent="Background"]
 show_behind_parent = true
@@ -54,38 +55,44 @@ metadata/_edit_lock_ = true
 wait_time = 0.3
 autostart = true
 
-[node name="ButtonsContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -224.0
-offset_right = 500.0
-offset_bottom = -184.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 100
-alignment = 1
-
-[node name="Settings" type="Button" parent="ButtonsContainer"]
+[node name="Settings" type="Button" parent="."]
 layout_mode = 2
+offset_left = 416.0
+offset_top = 893.0
+offset_right = 786.0
+offset_bottom = 967.0
 tooltip_text = "VIP"
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_h2am2")
 theme_override_font_sizes/font_size = 36
 text = "Настройки"
+flat = true
 
-[node name="Play" type="Button" parent="ButtonsContainer"]
+[node name="Play" type="Button" parent="."]
 layout_mode = 2
+offset_left = 926.0
+offset_top = 893.0
+offset_right = 1296.0
+offset_bottom = 967.0
+tooltip_text = "VIP"
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_h2am2")
 theme_override_font_sizes/font_size = 36
 text = "Играть"
+flat = true
 
-[node name="Exit" type="Button" parent="ButtonsContainer"]
+[node name="Exit" type="Button" parent="."]
 layout_mode = 2
+offset_left = 1417.0
+offset_top = 896.0
+offset_right = 1491.0
+offset_bottom = 970.0
+tooltip_text = "VIP"
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_h2am2")
 theme_override_font_sizes/font_size = 36
-text = "Выйти"
+flat = true
 
 [connection signal="timeout" from="Background/Glitch/GlitchTimer" to="Background/Glitch" method="_on_glitch_timer_timeout"]
-[connection signal="pressed" from="ButtonsContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ButtonsContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

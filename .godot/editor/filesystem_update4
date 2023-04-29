@@ -1,10 +1,2 @@
-res://prefabs/player.tscn
 res://scenes/menu.tscn
-res://scenes/game.tscn
-res://scripts/prefabs/player.gd
-res://scripts/camera.gd
-res://scripts/Root.gd
-res://data/constants.json
-res://scripts/CONSTANTS.gd
-res://scripts/GLOBAL.gd
-res://scripts/ui/menu.gd
+res://prefabs/player.tscn
