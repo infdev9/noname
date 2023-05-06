@@ -4,6 +4,8 @@ extends Sprite2D
 
 const BASE_OFFSET_X = 84
 
+var is_working: bool = true
+
 var cooldown: float = 0.5
 var reload_time: float = 1
 var recoil: float = 0.4
@@ -15,9 +17,15 @@ var max_ammo: int = 100
 var tween: Tween
 
 
+func _init(weapon_ammo: int = ammo_in_magazine, weapon_max_ammo: int = 100) -> void:
+	ammo = weapon_ammo
+	max_ammo = weapon_max_ammo
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action(GLOBAL.ACTIONS.SHOOT):
-		shoot()
+		if is_working:
+			shoot()
 
 
 func shoot() -> void:
@@ -25,8 +33,6 @@ func shoot() -> void:
 
 
 func try_spend_ammo(count: int) -> bool:
-	$Label.text = "Ammo: %s" % ammo
-	$Label2.text = "Max: %s" % max_ammo
 	if count <= ammo:
 		ammo -= count
 		return true
@@ -49,3 +55,5 @@ func rebound() -> void:
 	tween.tween_callback(tween.kill)
 
 
+func _on_cooldown_timeout() -> void:
+	is_working = true

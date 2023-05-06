@@ -32,14 +32,14 @@ func _enter_tree() -> void:
 		"Plankton":
 			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
 	
-	match weapon:
-		"Sniper":
-			weapon_node = $Sniper
-		"Rifle":
-			weapon_node = $Rifle
-		"Shotgun":
-			weapon_node = $Shotgun
-	weapon_node.show()
+#	match weapon:
+#		"Sniper":
+#			weapon_node = $Sniper
+#		"Rifle":
+#			weapon_node = $Rifle
+#		"Shotgun":
+#			weapon_node = $Shotgun
+#	weapon_node.show()
 
 
 func _physics_process(_delta: float) -> void:
@@ -99,8 +99,8 @@ func look_to(angle: float) -> void:
 		change_looking(Looking.LEFT)
 		%Sprite.set_z_index(0)
 	
-	weapon_node.set_rotation_degrees(angle)
+	$Rifle.set_rotation_degrees(angle)
 
 
-func kill() -> void:0
+func kill() -> void:
 	queue_free()
