@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://byw6urgp0aexf"]
+
+[ext_resource type="Texture2D" uid="uid://cqpstckyxih2l" path="res://assets/sprites/weapons/plasmaSniper.png" id="1_nj4qs"]
+[ext_resource type="Script" path="res://scripts/prefabs/weapons/weapon.gd" id="2_aocn7"]
+
+[node name="Weapon" type="Sprite2D"]
+texture = ExtResource("1_nj4qs")
+offset = Vector2(84, 0)
+script = ExtResource("2_aocn7")
+
+[node name="Cooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+process_callback = 0
+autostart = true
+
+[node name="Reload" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 283.0
+offset_top = 84.0
+offset_right = 398.0
+offset_bottom = 110.0
+text = "Ammo: 10"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 283.0
+offset_top = 116.0
+offset_right = 398.0
+offset_bottom = 142.0
+text = "Magazines: 10"
+
+[node name="Bullets" type="Node" parent="."]

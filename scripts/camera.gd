@@ -2,14 +2,14 @@ extends Camera2D
 
 
 var target_pos := Vector2.ZERO
-var tween: Tween
+
+@onready var tween := create_tween() as Tween
 
 
 func _ready() -> void:
 	set_global_position(%Player.get_global_position())
 	reset_smoothing()
 	target_pos = %Player.get_global_position()
-	tween = create_tween()
 
 
 func _physics_process(_delta: float) -> void:

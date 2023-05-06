@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://cjjnbpmhj114o"]
 
-[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_c1txc"]
-[ext_resource type="Texture2D" uid="uid://b24hwytdvci7s" path="res://assets/sprites/ui/tv.png" id="2_033q5"]
-[ext_resource type="Script" path="res://scripts/ui/glitch.gd" id="3_on8ww"]
-[ext_resource type="FontFile" uid="uid://ctyrtv8lxstyl" path="res://assets/fonts/font.ttf" id="4_h2am2"]
-[ext_resource type="Texture2D" uid="uid://ckb1ru2884bkj" path="res://assets/sprites/ui/buttons/button.png" id="4_lt06i"]
-[ext_resource type="Texture2D" uid="uid://dy8kfygm1pxak" path="res://assets/sprites/ui/glitch/settings1.png" id="4_quodf"]
-[ext_resource type="Texture2D" uid="uid://dk5vnoubomke0" path="res://assets/sprites/ui/glitch/settings2.png" id="5_3r4td"]
-[ext_resource type="Texture2D" uid="uid://bl64si6up3eau" path="res://assets/sprites/ui/buttons/exitbutton.png" id="6_3ogsk"]
-[ext_resource type="Texture2D" uid="uid://bf5gn7q7u2tsv" path="res://assets/sprites/ui/glitch/settings3.png" id="6_j8387"]
-[ext_resource type="Texture2D" uid="uid://cpc378l4w63dc" path="res://assets/sprites/ui/buttons/exitbutton_hover.png" id="7_jfmu5"]
+[ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_popii"]
+[ext_resource type="Texture2D" uid="uid://b24hwytdvci7s" path="res://assets/sprites/ui/tv.png" id="2_iwm4q"]
+[ext_resource type="Script" path="res://scripts/ui/glitch.gd" id="3_76mhd"]
+[ext_resource type="Texture2D" uid="uid://dy8kfygm1pxak" path="res://assets/sprites/ui/glitch/settings1.png" id="4_huirc"]
+[ext_resource type="Texture2D" uid="uid://dk5vnoubomke0" path="res://assets/sprites/ui/glitch/settings2.png" id="5_d1n6l"]
+[ext_resource type="Texture2D" uid="uid://bf5gn7q7u2tsv" path="res://assets/sprites/ui/glitch/settings3.png" id="6_yiej0"]
+[ext_resource type="Texture2D" uid="uid://ckb1ru2884bkj" path="res://assets/sprites/ui/buttons/button.png" id="7_7k0jo"]
+[ext_resource type="FontFile" uid="uid://ctyrtv8lxstyl" path="res://assets/fonts/font.ttf" id="8_yo6kf"]
+[ext_resource type="Texture2D" uid="uid://bl64si6up3eau" path="res://assets/sprites/ui/buttons/exitbutton.png" id="9_mg36j"]
+[ext_resource type="Texture2D" uid="uid://cpc378l4w63dc" path="res://assets/sprites/ui/buttons/exitbutton_hover.png" id="10_880bl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uiqju"]
 noise_type = 3
@@ -23,11 +23,11 @@ noise = SubResource("FastNoiseLite_uiqju")
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_sbnsr"]
 frames = 3
-frame_0/texture = ExtResource("4_quodf")
+frame_0/texture = ExtResource("4_huirc")
 frame_0/duration = 0.2
-frame_1/texture = ExtResource("5_3r4td")
+frame_1/texture = ExtResource("5_d1n6l")
 frame_1/duration = 0.2
-frame_2/texture = ExtResource("6_j8387")
+frame_2/texture = ExtResource("6_yiej0")
 frame_2/duration = 0.2
 
 [node name="Menu" type="Control"]
@@ -37,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c1txc")
+script = ExtResource("1_popii")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -46,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_033q5")
+texture = ExtResource("2_iwm4q")
 
 [node name="Glitch" type="TextureRect" parent="Background"]
 show_behind_parent = true
@@ -63,7 +63,7 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_w4jor")
-script = ExtResource("3_on8ww")
+script = ExtResource("3_76mhd")
 metadata/_edit_lock_ = true
 
 [node name="GlitchTimer" type="Timer" parent="Background/Glitch"]
@@ -102,7 +102,7 @@ theme_override_constants/separation = 120
 
 [node name="Settings" type="TextureRect" parent="Buttons"]
 layout_mode = 2
-texture = ExtResource("4_lt06i")
+texture = ExtResource("7_7k0jo")
 metadata/_edit_lock_ = true
 
 [node name="Settings" type="Button" parent="Buttons/Settings"]
@@ -113,7 +113,7 @@ offset_right = 374.0
 offset_bottom = 75.0
 tooltip_text = "VIP"
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_h2am2")
+theme_override_fonts/font = ExtResource("8_yo6kf")
 theme_override_font_sizes/font_size = 36
 text = "Настройки"
 flat = true
@@ -121,7 +121,7 @@ metadata/_edit_lock_ = true
 
 [node name="Play" type="TextureRect" parent="Buttons"]
 layout_mode = 2
-texture = ExtResource("4_lt06i")
+texture = ExtResource("7_7k0jo")
 metadata/_edit_lock_ = true
 
 [node name="Play" type="Button" parent="Buttons/Play"]
@@ -132,7 +132,7 @@ offset_right = 374.0
 offset_bottom = 75.0
 tooltip_text = "VIP"
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_h2am2")
+theme_override_fonts/font = ExtResource("8_yo6kf")
 theme_override_font_sizes/font_size = 36
 text = "Играть"
 flat = true
@@ -153,9 +153,9 @@ grow_horizontal = 0
 grow_vertical = 0
 tooltip_text = "VIP"
 focus_mode = 0
-texture_normal = ExtResource("6_3ogsk")
-texture_pressed = ExtResource("6_3ogsk")
-texture_hover = ExtResource("7_jfmu5")
+texture_normal = ExtResource("9_mg36j")
+texture_pressed = ExtResource("9_mg36j")
+texture_hover = ExtResource("10_880bl")
 ignore_texture_size = true
 stretch_mode = 0
 

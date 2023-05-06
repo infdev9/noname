@@ -6,9 +6,9 @@ const PLAYER_SPEED: int = 400
 const CAMERA_ANGLE: int = 45
 
 const SCENES: Dictionary = {
-	"MENU": "res://scenes/menu.tscn",
-	"LOBBY": "res://scenes/lobby.tscn",
-	"GAME": "res://scenes/game.tscn",
+	"MENU": "res://scenes/Menu.tscn",
+	"LOBBY": "res://scenes/Lobby.tscn",
+	"GAME": "res://scenes/Game.tscn",
 }
 
 const ACTIONS: Dictionary = {
@@ -16,6 +16,7 @@ const ACTIONS: Dictionary = {
 	"DOWN": "down",
 	"LEFT": "left",
 	"RIGHT": "right",
+	"SHOOT": "shoot",
 }
 
 const CAMERA_ANGLES: Dictionary = {
@@ -23,4 +24,13 @@ const CAMERA_ANGLES: Dictionary = {
 	"UP_RIGHT": -(90 - CAMERA_ANGLE),
 	"DOWN_RIGHT": 90 - CAMERA_ANGLE,
 	"DOWN_LEFT": 180 - CAMERA_ANGLE,
+}
+
+enum COLLISION_LAYERS {
+	NONE,
+	WORLD,
+	CHARACTER,
+	PLAYER,
+	BULLETS,
+	BOOSTS,
 }
