@@ -1,6 +1,10 @@
 extends Node
 
 
+func get_game_scene() -> Node2D:
+	return get_node("/root/Game")
+
+
 func change_scene(scene: String) -> void:
 	get_tree().change_scene_to_file(scene)
 

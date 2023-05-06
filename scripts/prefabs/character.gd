@@ -19,10 +19,12 @@ enum Looking {
 	DOWN,
 }
 
+var angle: float
+
 var current_state := States.IDLE
 var current_look := Looking.DOWN
 
-var weapon_node: Sprite2D
+var weapon_node: Weapon
 
 
 func _enter_tree() -> void:
@@ -32,14 +34,16 @@ func _enter_tree() -> void:
 		"Plankton":
 			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
 	
-#	match weapon:
-#		"Sniper":
-#			weapon_node = $Sniper
-#		"Rifle":
-#			weapon_node = $Rifle
-#		"Shotgun":
-#			weapon_node = $Shotgun
-#	weapon_node.show()
+	match weapon:
+		"Sniper":
+			weapon_node = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
+		"Rifle":
+			weapon_node = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
+		"Shotgun":
+			weapon_node = load("res://prefabs/Weapons/Shotgun.tscn").instantiate()
+	weapon_node.position.y = 13
+	weapon_node.set_scale(Vector2(0.8, 0.8))
+	add_child(weapon_node)
 
 
 func _physics_process(_delta: float) -> void:
@@ -47,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 		change_state(States.IDLE)
 	else:
 		change_state(States.WALK)
-
+	look_to()
 	move_and_slide()
 
 
@@ -85,7 +89,7 @@ func flip_sprite() -> void:
 		%Sprite.set_flip_h(false)
 
 
-func look_to(angle: float) -> void:
+func look_to() -> void:
 	if angle > GLOBAL.CAMERA_ANGLES.UP_LEFT and angle < GLOBAL.CAMERA_ANGLES.UP_RIGHT:
 		change_looking(Looking.UP)
 		%Sprite.set_z_index(1)
@@ -99,7 +103,7 @@ func look_to(angle: float) -> void:
 		change_looking(Looking.LEFT)
 		%Sprite.set_z_index(0)
 	
-	$Rifle.set_rotation_degrees(angle)
+	weapon_node.set_rotation_degrees(angle)
 
 
 func kill() -> void:

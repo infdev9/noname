@@ -18,3 +18,5 @@ func move_by_input() -> void:
 		velocity.x = direction.x * GLOBAL.PLAYER_SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, GLOBAL.PLAYER_SPEED)
+	
+	angle = rad_to_deg(get_angle_to(get_global_mouse_position()))

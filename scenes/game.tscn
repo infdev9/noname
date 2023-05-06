@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgtjy28iyvnxu"]
+[gd_scene load_steps=5 format=3 uid="uid://cgtjy28iyvnxu"]
 
 [ext_resource type="Texture2D" uid="uid://u21o5xhao4rw" path="res://assets/sprites/tilesets/default.png" id="1_nx388"]
 [ext_resource type="PackedScene" uid="uid://b8ociykjwi5wk" path="res://prefabs/Player.tscn" id="2_dsq26"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="3_f1asp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1ieo"]
 texture = ExtResource("1_nx388")
@@ -48,13 +47,20 @@ layer_0/tile_data = PackedInt32Array(65536, 65537, 0, 131072, 65537, 0, 196608, 
 unique_name_in_owner = true
 position = Vector2(960, 0)
 collision_layer = 1
+motion_mode = 0
 skin = "Plankton"
 weapon = "Shotgun"
 
-[node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-process_callback = 0
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.75, 1.75)
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 15.0
-script = ExtResource("3_f1asp")
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.15
+
+[node name="Bullets" type="Node2D" parent="."]

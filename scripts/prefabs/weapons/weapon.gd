@@ -9,6 +9,8 @@ var is_working: bool = true
 var cooldown: float = 0.5
 var reload_time: float = 1
 var recoil: float = 0.4
+var bullet_lifetime: float = 0.5
+var bullet_acceleration: float = 1000
 
 var ammo: int = 9
 var ammo_in_magazine: int = 10
@@ -17,13 +19,9 @@ var max_ammo: int = 100
 var tween: Tween
 
 
-func _init(weapon_ammo: int = ammo_in_magazine, weapon_max_ammo: int = 100) -> void:
-	ammo = weapon_ammo
-	max_ammo = weapon_max_ammo
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action(GLOBAL.ACTIONS.SHOOT):
+func _physics_process(_delta: float) -> void:
+	#look_at(get_global_mouse_position())
+	if Input.is_action_pressed(GLOBAL.ACTIONS.SHOOT):
 		if is_working:
 			shoot()
 
@@ -41,9 +39,19 @@ func try_spend_ammo(count: int) -> bool:
 		return false
 
 
+func wait_cooldown() -> void:
+	is_working = false
+	%Cooldown.start(cooldown)
+
+
 func reload() -> void:
+	is_working = false
+	%Reload.start(reload_time)
+	await %Reload.timeout
+	
 	ammo = ammo_in_magazine
 	max_ammo -= ammo_in_magazine
+	is_working = true
 
 
 func rebound() -> void:

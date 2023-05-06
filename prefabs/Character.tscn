@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://xcfo8v164ic6"]
+[gd_scene load_steps=7 format=3 uid="uid://xcfo8v164ic6"]
 
 [ext_resource type="Script" path="res://scripts/prefabs/character.gd" id="1_dtm0u"]
 [ext_resource type="SpriteFrames" uid="uid://duh6cnqu28pld" path="res://resources/animations/AnimatedSprite2D/duck.tres" id="1_wjyu6"]
-[ext_resource type="PackedScene" uid="uid://c6gmjq1fbiqte" path="res://prefabs/Weapons/Rifle.tscn" id="3_xwhl2"]
 [ext_resource type="AnimationLibrary" uid="uid://2kf2nyatiu40" path="res://resources/animations/player_movement.res" id="5_gqhw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eagb5"]
@@ -30,6 +29,7 @@ _data = {
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_dtm0u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,10 +46,6 @@ autoplay = "idle"
 [node name="DeathParticles" type="GPUParticles2D" parent="."]
 editor_description = "VIP"
 visible = false
-
-[node name="Rifle" parent="." instance=ExtResource("3_xwhl2")]
-position = Vector2(-2.98023e-06, 13)
-scale = Vector2(0.8, 0.8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
