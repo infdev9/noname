@@ -2,8 +2,8 @@ class_name Character
 extends CharacterBody2D
 
 
-@export_enum("Duck", "Plankton") var skin: String = "Duck"
-@export_enum("Sniper", "Rifle", "Shotgun") var weapon: String = "Sniper"
+@export_enum("Duck", "Plankton") var current_skin: String = "Duck"
+@export_enum("None", "Sniper", "Rifle", "Shotgun") var current_weapon: String = "None"
 
 enum States {
 	IDLE,
@@ -24,26 +24,28 @@ var angle: float
 var current_state := States.IDLE
 var current_look := Looking.DOWN
 
-var weapon_node: Weapon
+var weapon: Weapon
 
 
 func _enter_tree() -> void:
-	match skin:
+	match current_skin:
 		"Duck":
 			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/duck.tres"))
 		"Plankton":
 			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
 	
-	match weapon:
+	match current_weapon:
+		"None":
+			weapon = load("res://prefabs/Weapons/Weapon.tscn").instantiate()
 		"Sniper":
-			weapon_node = load("res://prefabs/Weapons/Sniper.tscn").instantiate()
+			weapon = load("res://prefabs/Weapons/Sniper.tscn").instantiate()
 		"Rifle":
-			weapon_node = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
+			weapon = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
 		"Shotgun":
-			weapon_node = load("res://prefabs/Weapons/Shotgun.tscn").instantiate()
-	weapon_node.position.y = 13
-	weapon_node.set_scale(Vector2(0.8, 0.8))
-	add_child(weapon_node)
+			weapon = load("res://prefabs/Weapons/Shotgun.tscn").instantiate()
+	weapon.position.y = 13
+	weapon.set_scale(Vector2(0.8, 0.8))
+	add_child(weapon)
 
 
 func _physics_process(_delta: float) -> void:
@@ -103,7 +105,7 @@ func look_to() -> void:
 		change_looking(Looking.LEFT)
 		%Sprite.set_z_index(0)
 	
-	weapon_node.set_rotation_degrees(angle)
+	weapon.set_rotation_degrees(angle)
 
 
 func kill() -> void:

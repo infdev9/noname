@@ -22,6 +22,6 @@ func shoot():
 		bullet._init(bullet_lifetime, Vector2(0.5, 0.5))
 		bullet.set_position($BulletsSpawnPos.get_global_position())
 		bullet.set_axis_velocity(Vector2.from_angle(rotation) * bullet_acceleration)
-		Root.get_game_scene().get_node("Bullets").add_child(bullet)
+		Root.get_current_scene().get_node("Bullets").add_child(bullet)
 		wait_cooldown()
 

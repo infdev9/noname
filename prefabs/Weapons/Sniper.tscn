@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://4hnkodynp7ja"]
+[gd_scene load_steps=4 format=3 uid="uid://4hnkodynp7ja"]
 
 [ext_resource type="PackedScene" uid="uid://byw6urgp0aexf" path="res://prefabs/Weapons/Weapon.tscn" id="1_eqglo"]
+[ext_resource type="Texture2D" uid="uid://cqpstckyxih2l" path="res://assets/sprites/weapons/plasmaSniper.png" id="2_k1pn8"]
 [ext_resource type="Script" path="res://scripts/prefabs/weapons/sniper.gd" id="2_lahj7"]
 
 [node name="Sniper" instance=ExtResource("1_eqglo")]
+texture = ExtResource("2_k1pn8")
 script = ExtResource("2_lahj7")
 
 [node name="BulletsSpawnPos" type="Marker2D" parent="." index="2"]

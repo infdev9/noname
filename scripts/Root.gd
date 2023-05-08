@@ -1,12 +1,23 @@
 extends Node
 
 
+var gui: PackedScene = preload("res://prefabs/GUI.tscn")
+
+
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.BLACK)
 
 
-func get_current_scene() -> Node2D:
+func get_current_scene() -> Node:
 	return get_tree().get_current_scene()
+
+
+func get_player() -> Player:
+	return get_current_scene().get_node("Player")
+
+
+func append_gui_to_scene() -> void:
+	get_current_scene().add_child.call_deferred(gui.instantiate())
 
 
 func change_scene(scene: String) -> void:

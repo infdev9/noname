@@ -18,10 +18,11 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is TileMap:
-		destroy()
-	elif body is Character and not body is Player:
+	if body is Character and not body is Player:
 		body.kill()
+		destroy()
+	else:
+		destroy()
 
 
 func _on_life_timer_timeout() -> void:
@@ -32,7 +33,8 @@ func destroy():
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_deferred("freeze", true)
 	var tween = create_tween()
-	tween.tween_property($Sprite, "scale", Vector2.ZERO, 0.1)
+	tween.tween_property($Sprite, "scale", scale_modifier / 2, 0.05)
+	tween.tween_property($Sprite, "modulate:a", 0, 0.1)
 	tween.tween_callback(queue_free)
 
 

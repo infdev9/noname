@@ -64,8 +64,7 @@ scale = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("2_to0yu")]
 position = Vector2(384, 401)
-skin = "Plankton"
-weapon = "Shotgun"
+current_weapon = "Shotgun"
 
 [node name="Camera2D" parent="Player" instance=ExtResource("3_jdkg5")]
 metadata/_edit_lock_ = true

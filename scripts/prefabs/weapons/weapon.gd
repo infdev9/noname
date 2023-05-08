@@ -40,8 +40,11 @@ func try_spend_ammo(count: int) -> bool:
 		ammo -= count
 		return true
 	else:
-		reload()
-		return false
+		if max_ammo >= ammo_in_magazine:
+			reload()
+			return false
+		else:
+			return false
 
 
 func wait_cooldown() -> void:

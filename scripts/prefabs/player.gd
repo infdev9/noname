@@ -2,6 +2,10 @@ class_name Player
 extends Character
 
 
+func _ready() -> void:
+	Root.append_gui_to_scene()
+
+
 func _physics_process(delta: float) -> void:
 	move_by_input()
 	super(delta)

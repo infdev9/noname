@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 	recoil = 0.5
 	bullet_acceleration = 500
 	bullet_lifetime = 0.5
-	ammo_in_magazine = 24
+	ammo_in_magazine = 25
 	ammo = ammo_in_magazine
 
 
