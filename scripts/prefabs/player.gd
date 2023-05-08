@@ -11,6 +11,13 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 
 
+func _on_interact_area_body_entered(body: StaticBody2D) -> void:
+	Root.get_gui().show_interactable_object(body.get_name())
+
+func _on_interact_area_body_exited(_body: StaticBody2D) -> void:
+	Root.get_gui().hide_interactable_object()
+
+
 func move_by_input() -> void:
 	var direction := Vector2(Input.get_axis(GLOBAL.ACTIONS.LEFT, GLOBAL.ACTIONS.RIGHT), 
 			Input.get_axis(GLOBAL.ACTIONS.UP, GLOBAL.ACTIONS.DOWN))
@@ -24,3 +31,4 @@ func move_by_input() -> void:
 		velocity.x = move_toward(velocity.x, 0, GLOBAL.PLAYER_SPEED)
 	
 	angle = rad_to_deg(get_angle_to(get_global_mouse_position()))
+

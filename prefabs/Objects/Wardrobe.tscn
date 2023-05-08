@@ -7,6 +7,7 @@
 size = Vector2(23, 67.5)
 
 [node name="Wardrobe" instance=ExtResource("1_c73o2")]
+collision_layer = 33
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_0ry48")

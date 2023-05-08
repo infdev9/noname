@@ -16,6 +16,10 @@ func get_player() -> Player:
 	return get_current_scene().get_node("Player")
 
 
+func get_gui() -> GUI:
+	return get_current_scene().get_node("GUI")
+
+
 func append_gui_to_scene() -> void:
 	get_current_scene().add_child.call_deferred(gui.instantiate())
 

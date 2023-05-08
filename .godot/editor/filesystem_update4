@@ -15,3 +15,9 @@ res://prefabs/Weapons/Sniper.tscn
 res://prefabs/GUI.tscn
 res://scripts/ui/GUI.gd
 res://scripts/prefabs/player.gd
+res://scripts/GLOBAL.gd
+res://prefabs/Objects/Door.tscn
+res://prefabs/Objects/Table.tscn
+res://prefabs/Objects/Wardrobe.tscn
+res://prefabs/Objects/TV.tscn
+res://prefabs/Objects/Sofa.tscn

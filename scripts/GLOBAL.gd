@@ -17,6 +17,7 @@ const ACTIONS: Dictionary = {
 	"LEFT": "left",
 	"RIGHT": "right",
 	"SHOOT": "shoot",
+	"INTERACT": "interact",
 }
 
 const CAMERA_ANGLES: Dictionary = {
@@ -33,4 +34,5 @@ enum COLLISION_LAYERS {
 	PLAYER,
 	BULLETS,
 	BOOSTS,
+	INTERACTABLE,
 }

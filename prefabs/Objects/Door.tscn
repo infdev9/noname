@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dfykth5lwcilx" path="res://assets/sprites/objects/lobby/door.png" id="2_htqsc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qalmu"]
-size = Vector2(8, 98)
+size = Vector2(5, 98)
 
 [node name="Door" instance=ExtResource("1_g7jpf")]
+collision_layer = 33
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_htqsc")
 metadata/Interact = "leave"
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_qalmu")

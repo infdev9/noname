@@ -1,8 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8ociykjwi5wk"]
+[gd_scene load_steps=4 format=3 uid="uid://b8ociykjwi5wk"]
 
 [ext_resource type="PackedScene" uid="uid://xcfo8v164ic6" path="res://prefabs/Character.tscn" id="1_p0nv0"]
 [ext_resource type="Script" path="res://scripts/prefabs/player.gd" id="2_80uec"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_alvfh"]
+radius = 82.0549
+
 [node name="Player" instance=ExtResource("1_p0nv0")]
 collision_layer = 4
 script = ExtResource("2_80uec")
+
+[node name="InteractArea" type="Area2D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 32
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" index="0"]
+position = Vector2(-2, 6)
+shape = SubResource("CircleShape2D_alvfh")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

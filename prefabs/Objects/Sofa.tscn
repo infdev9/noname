@@ -9,7 +9,7 @@ size = Vector2(134, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbii8"]
 size = Vector2(9, 20)
 
-[node name="Object" instance=ExtResource("1_2p7bt")]
+[node name="Sofa" instance=ExtResource("1_2p7bt")]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_or1hf")

@@ -7,9 +7,11 @@
 size = Vector2(23, 56)
 
 [node name="Table" instance=ExtResource("1_iqjhb")]
+collision_layer = 33
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_nuvub")
+flip_h = true
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_fg2yd")

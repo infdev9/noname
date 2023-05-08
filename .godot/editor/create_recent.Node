@@ -1,9 +1,9 @@
-CanvasLayer
 Control
 Label
+Area2D
+CanvasLayer
 CollisionShape2D
 StaticBody2D
-Area2D
 Sprite2D
 TileMap
 Marker2D

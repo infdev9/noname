@@ -7,6 +7,7 @@
 size = Vector2(104, 28)
 
 [node name="TV" instance=ExtResource("1_ntqvu")]
+collision_layer = 33
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_dveey")
