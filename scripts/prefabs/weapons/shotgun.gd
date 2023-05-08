@@ -6,13 +6,14 @@ const BULLET: PackedScene = preload("res://prefabs/Weapons/Bullet.tscn")
 
 
 func _enter_tree() -> void:
-	cooldown = 0.6
-	reload_time = 1.6
+	super()
+	cooldown = 1
+	reload_time = 2
 	recoil = 0.5
 	bullet_acceleration = 500
 	bullet_lifetime = 0.5
-	
-	ammo_in_magazine = 18
+	ammo_in_magazine = 24
+	ammo = ammo_in_magazine
 
 
 func shoot():
@@ -21,10 +22,10 @@ func shoot():
 		
 		for i in range(-2, 3):
 			var bullet: Bullet = BULLET.instantiate()
-			bullet._init(bullet_lifetime, Vector2(0.4, 0.4))
+			bullet._init(bullet_lifetime, Vector2(0.8, 0.8))
 			bullet.set_position($BulletsSpawnPos.get_global_position())
 			bullet.set_axis_velocity(Vector2.from_angle(rotation + deg_to_rad(15 * i)) * bullet_acceleration)
-			Root.get_game_scene().get_node("Bullets").add_child(bullet)
+			Root.get_current_scene().get_node("Bullets").add_child(bullet)
 		
 		wait_cooldown()
 

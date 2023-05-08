@@ -1,3 +1,8 @@
+CollisionShape2D
+StaticBody2D
+Area2D
+Sprite2D
+TileMap
 Marker2D
 Node2D
 Camera2D
@@ -5,9 +10,6 @@ Timer
 Node
 MultiplayerSpawner
 RigidBody2D
-Sprite2D
-CollisionShape2D
-Area2D
 Label
 CharacterBody2D
 TextureRect

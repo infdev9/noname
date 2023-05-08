@@ -1,8 +1,12 @@
 extends Node
 
 
-func get_game_scene() -> Node2D:
-	return get_node("/root/Game")
+func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color.BLACK)
+
+
+func get_current_scene() -> Node2D:
+	return get_tree().get_current_scene()
 
 
 func change_scene(scene: String) -> void:

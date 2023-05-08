@@ -19,8 +19,13 @@ var max_ammo: int = 100
 var tween: Tween
 
 
+func _enter_tree() -> void:
+	var bullets_group := Node2D.new()
+	bullets_group.set_name("Bullets")
+	Root.get_current_scene().add_child.call_deferred(bullets_group)
+
+
 func _physics_process(_delta: float) -> void:
-	#look_at(get_global_mouse_position())
 	if Input.is_action_pressed(GLOBAL.ACTIONS.SHOOT):
 		if is_working:
 			shoot()

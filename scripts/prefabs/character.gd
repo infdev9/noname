@@ -36,7 +36,7 @@ func _enter_tree() -> void:
 	
 	match weapon:
 		"Sniper":
-			weapon_node = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
+			weapon_node = load("res://prefabs/Weapons/Sniper.tscn").instantiate()
 		"Rifle":
 			weapon_node = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
 		"Shotgun":

@@ -6,6 +6,7 @@ const BULLET: PackedScene = preload("res://prefabs/Weapons/Bullet.tscn")
 
 
 func _enter_tree() -> void:
+	super()
 	cooldown = 0.15
 	reload_time = 0.2
 	recoil = 0.9
