@@ -2,9 +2,6 @@ class_name Character
 extends CharacterBody2D
 
 
-@export_enum("Duck", "Plankton") var current_skin: String = "Duck"
-@export_enum("None", "Sniper", "Rifle", "Shotgun") var current_weapon: String = "None"
-
 enum States {
 	IDLE,
 	WALK,
@@ -19,33 +16,29 @@ enum Looking {
 	DOWN,
 }
 
+enum Skins {
+	PLANKTON,
+	DUCK,
+}
+
+enum Weapons {
+	NONE,
+	SNIPER,
+	RIFLE,
+	SHOTGUN,
+}
+
 var angle: float
 
 var current_state := States.IDLE
 var current_look := Looking.DOWN
 
-var weapon: Weapon
+var weapon := Weapon.new()
 
 
 func _enter_tree() -> void:
-	match current_skin:
-		"Duck":
-			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/duck.tres"))
-		"Plankton":
-			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
-	
-	match current_weapon:
-		"None":
-			weapon = load("res://prefabs/Weapons/Weapon.tscn").instantiate()
-		"Sniper":
-			weapon = load("res://prefabs/Weapons/Sniper.tscn").instantiate()
-		"Rifle":
-			weapon = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
-		"Shotgun":
-			weapon = load("res://prefabs/Weapons/Shotgun.tscn").instantiate()
-	weapon.position.y = 13
-	weapon.set_scale(Vector2(0.8, 0.8))
-	add_child(weapon)
+	change_skin(Skins.PLANKTON)
+	change_weapon(Weapons.NONE)
 
 
 func _physics_process(_delta: float) -> void:
@@ -65,6 +58,30 @@ func change_state(state: States) -> void:
 func change_looking(direction: Looking) -> void:
 	current_look = direction
 	update_animation()
+
+
+func change_skin(new_skin: Skins) -> void:
+	match new_skin:
+		Skins.DUCK:
+			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/duck.tres"))
+		Skins.PLANKTON:
+			%Sprite.set_sprite_frames(load("res://resources/animations/AnimatedSprite2D/plankton.tres"))
+
+
+func change_weapon(new_weapon: Weapons) -> void:
+	weapon.queue_free()
+	match new_weapon:
+		Weapons.NONE:
+			weapon = load("res://prefabs/Weapons/Weapon.tscn").instantiate()
+		Weapons.SNIPER:
+			weapon = load("res://prefabs/Weapons/Sniper.tscn").instantiate()
+		Weapons.RIFLE:
+			weapon = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
+		Weapons.SHOTGUN:
+			weapon = load("res://prefabs/Weapons/Shotgun.tscn").instantiate()
+	weapon.position.y = 13
+	weapon.set_scale(Vector2(0.8, 0.8))
+	add_child(weapon)
 
 
 func update_animation() -> void:

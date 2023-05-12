@@ -2,9 +2,6 @@ class_name Shotgun
 extends Weapon
 
 
-const BULLET: PackedScene = preload("res://prefabs/Weapons/Bullet.tscn")
-
-
 func _enter_tree() -> void:
 	super()
 	cooldown = 1
@@ -21,7 +18,7 @@ func shoot():
 		rebound()
 		
 		for i in range(-2, 3):
-			var bullet: Bullet = BULLET.instantiate()
+			var bullet: Bullet = BULLET.instantiate() if is_player else BULLET_ENEMY.instantiate()
 			bullet._init(bullet_lifetime, Vector2(0.8, 0.8))
 			bullet.set_position($BulletsSpawnPos.get_global_position())
 			bullet.set_axis_velocity(Vector2.from_angle(rotation + deg_to_rad(15 * i)) * bullet_acceleration)

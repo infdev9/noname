@@ -32,3 +32,12 @@ func move_by_input() -> void:
 	
 	angle = rad_to_deg(get_angle_to(get_global_mouse_position()))
 
+
+### debug
+func _unhandled_key_input(event: InputEvent) -> void:
+	match event.keycode:
+		KEY_0: change_weapon(Weapons.NONE)
+		KEY_1: change_weapon(Weapons.RIFLE)
+		KEY_2: change_weapon(Weapons.SNIPER)
+		KEY_3: change_weapon(Weapons.SHOTGUN)
+###

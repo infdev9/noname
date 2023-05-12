@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Root="*res://scripts/Root.gd"
 GLOBAL="*res://scripts/GLOBAL.gd"
+Gui="*res://prefabs/GUI.tscn"
 
 [display]
 

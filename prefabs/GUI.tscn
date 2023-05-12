@@ -9,6 +9,8 @@ font_size = 128
 font_size = 64
 
 [node name="GUI" type="CanvasLayer"]
+process_mode = 4
+visible = false
 script = ExtResource("1_nusar")
 
 [node name="Control" type="Control" parent="."]
