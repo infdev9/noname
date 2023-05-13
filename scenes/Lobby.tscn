@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbjx7u3ugqca1"]
+[gd_scene load_steps=12 format=3 uid="uid://dbjx7u3ugqca1"]
 
+[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_0nhxt"]
 [ext_resource type="Texture2D" uid="uid://qdiwmq5egpy3" path="res://assets/sprites/tilesets/lobby.png" id="1_88ujc"]
 [ext_resource type="Texture2D" uid="uid://clkk4um7ailcx" path="res://assets/sprites/objects/lobby/carpet.png" id="2_830j5"]
-[ext_resource type="PackedScene" uid="uid://b8ociykjwi5wk" path="res://prefabs/Player.tscn" id="2_to0yu"]
-[ext_resource type="PackedScene" uid="uid://of8txrin4jqa" path="res://prefabs/Camera2D.tscn" id="3_jdkg5"]
 [ext_resource type="PackedScene" uid="uid://b0d3qimrm73t7" path="res://prefabs/Objects/TV.tscn" id="4_vrd6h"]
 [ext_resource type="PackedScene" uid="uid://bf077wycam4n1" path="res://prefabs/Objects/Sofa.tscn" id="5_wigwv"]
 [ext_resource type="PackedScene" uid="uid://dxdotd6s18cbk" path="res://prefabs/Objects/Table.tscn" id="6_ru4dg"]
@@ -31,6 +30,7 @@ sources/0 = SubResource("TileSetAtlasSource_2dk81")
 size = Vector2(48, 720)
 
 [node name="Lobby" type="Node2D"]
+script = ExtResource("1_0nhxt")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.125, 0.125)
@@ -74,8 +74,8 @@ position = Vector2(384, 771)
 rotation = 1.5708
 scale = Vector2(3, 3)
 
-[node name="Player" parent="." instance=ExtResource("2_to0yu")]
-position = Vector2(384, 401)
+[node name="Characters" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(384, 368)
 
-[node name="Camera2D" parent="Player" instance=ExtResource("3_jdkg5")]
-metadata/_edit_lock_ = true
+[node name="Bullets" type="Node2D" parent="."]

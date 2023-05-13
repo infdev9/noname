@@ -2,20 +2,30 @@ class_name Player
 extends Character
 
 
+var player_name: String = "Player"
+var player_skin: Skins = Skins.PLANKTON
+
+
 func _ready() -> void:
 	Root.append_gui_to_scene()
 
 
 func _physics_process(delta: float) -> void:
 	move_by_input()
+	weapon_input()
 	super(delta)
+	
+	rpc("remote_set_position", position)
+	rpc("remote_set_angle", angle)
+
 
 
 func _on_interact_area_body_entered(body: StaticBody2D) -> void:
-	Root.get_gui().show_interactable_object(body.get_name())
+	Gui.show_interactable_object(body.get_name())
+
 
 func _on_interact_area_body_exited(_body: StaticBody2D) -> void:
-	Root.get_gui().hide_interactable_object()
+	Gui.hide_interactable_object()
 
 
 func move_by_input() -> void:
@@ -33,11 +43,20 @@ func move_by_input() -> void:
 	angle = rad_to_deg(get_angle_to(get_global_mouse_position()))
 
 
-### debug
-func _unhandled_key_input(event: InputEvent) -> void:
-	match event.keycode:
-		KEY_0: change_weapon(Weapons.NONE)
-		KEY_1: change_weapon(Weapons.RIFLE)
-		KEY_2: change_weapon(Weapons.SNIPER)
-		KEY_3: change_weapon(Weapons.SHOTGUN)
-###
+func weapon_input() -> void:
+	if Input.is_action_pressed(GLOBAL.ACTIONS.SHOOT):
+		weapon.shoot()
+		rpc("remote_weapon_shoot")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	### debug
+	if event is InputEventKey:
+		match event.keycode:
+			KEY_0: change_weapon(Weapons.NONE)
+			KEY_1: change_weapon(Weapons.RIFLE)
+			KEY_2: change_weapon(Weapons.SNIPER)
+			KEY_3: change_weapon(Weapons.SHOTGUN)
+	###
+
+

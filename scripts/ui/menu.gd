@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_play_pressed() -> void:
-	Root.change_scene(GLOBAL.SCENES.GAME)
+	$Server.show()
 
 
 func _on_settings_pressed() -> void:

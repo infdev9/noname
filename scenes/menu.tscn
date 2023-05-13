@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjjnbpmhj114o"]
+[gd_scene load_steps=15 format=3 uid="uid://cjjnbpmhj114o"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu.gd" id="1_popii"]
 [ext_resource type="Texture2D" uid="uid://b24hwytdvci7s" path="res://assets/sprites/ui/tv.png" id="2_iwm4q"]
@@ -29,6 +29,31 @@ frame_1/texture = ExtResource("5_d1n6l")
 frame_1/duration = 0.2
 frame_2/texture = ExtResource("6_yiej0")
 frame_2/duration = 0.2
+
+[sub_resource type="GDScript" id="GDScript_y1h8v"]
+resource_name = "ServerPanel"
+script/source = "extends Panel
+
+
+func _ready() -> void:
+	$Host/Label.set_text(\"IP: \" + IP.get_local_addresses()[0])
+
+
+func _on_host_pressed() -> void:
+	Net.init_server()
+	Root.change_scene(GLOBAL.SCENES.LOBBY)
+
+
+func _on_join_pressed() -> void:
+	if $Join/LineEdit.get_text().is_valid_ip_address():
+		Net.init_client($Join/LineEdit.get_text())
+		Root.change_scene(GLOBAL.SCENES.LOBBY)
+
+
+func _on_local_pressed() -> void:
+	Net.init_client(IP.get_local_addresses()[0])
+	Root.change_scene(GLOBAL.SCENES.LOBBY)
+"
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -159,9 +184,95 @@ texture_hover = ExtResource("10_880bl")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="Server" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_y1h8v")
+
+[node name="Host" type="Button" parent="Server"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.5
+offset_top = -304.0
+offset_right = 283.5
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Create Host"
+
+[node name="Label" type="Label" parent="Server/Host"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "IP: "
+horizontal_alignment = 1
+
+[node name="Join" type="Button" parent="Server"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.5
+offset_top = -88.0
+offset_right = 283.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Join"
+
+[node name="LineEdit" type="LineEdit" parent="Server/Join"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+placeholder_text = "IP"
+alignment = 1
+context_menu_enabled = false
+
+[node name="Local" type="Button" parent="Server/Join"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 87.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Join Local"
+
 [connection signal="timeout" from="Background/Glitch/GlitchTimer" to="Background/Glitch" method="_on_glitch_timer_timeout"]
 [connection signal="mouse_entered" from="Buttons/Settings/Settings" to="." method="_on_settings_hovered"]
 [connection signal="mouse_exited" from="Buttons/Settings/Settings" to="." method="_on_settings_unhovered"]
 [connection signal="pressed" from="Buttons/Settings/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Buttons/Play/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Server/Host" to="Server" method="_on_host_pressed"]
+[connection signal="pressed" from="Server/Join" to="Server" method="_on_join_pressed"]
+[connection signal="pressed" from="Server/Join/Local" to="Server" method="_on_local_pressed"]

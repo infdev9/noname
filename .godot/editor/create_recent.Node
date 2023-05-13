@@ -1,6 +1,9 @@
 Node2D
-Control
+Button
 Label
+LineEdit
+Panel
+Control
 Area2D
 CanvasLayer
 CollisionShape2D

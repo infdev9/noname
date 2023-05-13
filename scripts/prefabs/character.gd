@@ -30,13 +30,15 @@ enum Weapons {
 
 var angle: float
 
-var current_state := States.IDLE
-var current_look := Looking.DOWN
+var current_state: States = States.IDLE
+var current_look: Looking = Looking.DOWN
+var current_weapon: Weapons = Weapons.NONE
 
 var weapon := Weapon.new()
 
 
 func _enter_tree() -> void:
+	set_name(str(get_multiplayer_authority()))
 	change_skin(Skins.PLANKTON)
 	change_weapon(Weapons.NONE)
 
@@ -69,8 +71,14 @@ func change_skin(new_skin: Skins) -> void:
 
 
 func change_weapon(new_weapon: Weapons) -> void:
+	update_weapon(new_weapon)
+	rpc("remote_set_weapon", current_weapon)
+
+
+func update_weapon(new_weapon: Weapons) -> void:
 	weapon.queue_free()
-	match new_weapon:
+	current_weapon = new_weapon
+	match current_weapon:
 		Weapons.NONE:
 			weapon = load("res://prefabs/Weapons/Weapon.tscn").instantiate()
 		Weapons.SNIPER:
@@ -79,9 +87,7 @@ func change_weapon(new_weapon: Weapons) -> void:
 			weapon = load("res://prefabs/Weapons/Rifle.tscn").instantiate()
 		Weapons.SHOTGUN:
 			weapon = load("res://prefabs/Weapons/Shotgun.tscn").instantiate()
-	weapon.position.y = 13
-	weapon.set_scale(Vector2(0.8, 0.8))
-	add_child(weapon)
+	%Weapon.add_child(weapon)
 
 
 func update_animation() -> void:
@@ -126,4 +132,28 @@ func look_to() -> void:
 
 
 func kill() -> void:
-	queue_free()
+	hide()
+
+
+func init_net(id: int) -> void:
+	set_name(str(id))
+
+
+@rpc("any_peer", "unreliable")
+func remote_set_position(authority_position: Vector2) -> void:
+	set_position(authority_position)
+
+
+@rpc("any_peer", "unreliable")
+func remote_set_angle(authority_angle: float) -> void:
+	angle = authority_angle
+
+
+@rpc("any_peer", "unreliable")
+func remote_set_weapon(authority_weapon: Weapons) -> void:
+	update_weapon(authority_weapon)
+
+
+@rpc("any_peer", "unreliable")
+func remote_weapon_shoot() -> void:
+	weapon.shoot()

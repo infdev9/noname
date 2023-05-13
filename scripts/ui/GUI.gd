@@ -15,14 +15,14 @@ func _physics_process(_delta: float) -> void:
 func show_interactable_object(object: String) -> void:
 	match object:
 		"TV":
-			
-			$Control/HUD/Clue.set_text("Нажмите , чтобы\nначать игру")
+			$Control/HUD/Clue.set_text("Нажмите I, чтобы\nначать игру")
 		"Wardrobe":
 			$Control/HUD/Clue.set_text("Нажмите I, чтобы\nсменить скин")
 		"Table":
 			$Control/HUD/Clue.set_text("Нажмите I, чтобы\nсменить ник")
 		"Door":
 			$Control/HUD/Clue.set_text("Нажмите I, чтобы\nвыйти")
+
 
 func hide_interactable_object() -> void:
 	$Control/HUD/Clue.set_text("")

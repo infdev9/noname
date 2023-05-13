@@ -10,11 +10,7 @@ func get_current_scene() -> Node:
 
 
 func get_player() -> Player:
-	return get_current_scene().get_node("Player")
-
-
-func get_gui() -> GUI:
-	return get_current_scene().get_node("GUI")
+	return get_current_scene().player
 
 
 func append_gui_to_scene() -> void:

@@ -12,6 +12,7 @@ func _enter_tree() -> void:
 
 
 func shoot():
+	super()
 	if try_spend_ammo(1):
 		rebound()
 		

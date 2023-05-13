@@ -24,20 +24,16 @@ const BULLET_ENEMY: PackedScene = preload("res://prefabs/Weapons/BulletEnemy.tsc
 
 
 func _enter_tree() -> void:
-	var bullets_group := Node2D.new()
-	bullets_group.set_name("Bullets")
-	Root.get_current_scene().add_child.call_deferred(bullets_group)
-	is_player = true if get_parent() is Player else false
+	is_player = true if get_parent().get_parent() is Player else false
 
 
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed(GLOBAL.ACTIONS.SHOOT):
-		if is_working:
-			shoot()
+func _on_cooldown_timeout() -> void:
+	is_working = true
 
 
 func shoot() -> void:
-	pass
+	if !is_working:
+		return
 
 
 func try_spend_ammo(count: int) -> bool:
@@ -74,8 +70,4 @@ func rebound() -> void:
 	tween.tween_property(self, "offset:x", BASE_OFFSET_X * recoil, cooldown / 2)
 	tween.tween_property(self, "offset:x", BASE_OFFSET_X, cooldown / 2)
 	tween.tween_callback(tween.kill)
-
-
-func _on_cooldown_timeout() -> void:
-	is_working = true
 
