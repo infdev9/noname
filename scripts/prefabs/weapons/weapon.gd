@@ -32,8 +32,7 @@ func _on_cooldown_timeout() -> void:
 
 
 func shoot() -> void:
-	if !is_working:
-		return
+	pass
 
 
 func try_spend_ammo(count: int) -> bool:

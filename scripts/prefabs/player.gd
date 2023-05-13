@@ -11,8 +11,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move_by_input()
-	weapon_input()
+	if !is_blocked:
+		move_by_input()
+		weapon_input()
+	else:
+		velocity = Vector2.ZERO
 	super(delta)
 	
 	rpc("remote_set_position", position)
@@ -30,7 +33,7 @@ func _on_interact_area_body_exited(_body: StaticBody2D) -> void:
 
 func move_by_input() -> void:
 	var direction := Vector2(Input.get_axis(GLOBAL.ACTIONS.LEFT, GLOBAL.ACTIONS.RIGHT), 
-			Input.get_axis(GLOBAL.ACTIONS.UP, GLOBAL.ACTIONS.DOWN))
+			Input.get_axis(GLOBAL.ACTIONS.UP, GLOBAL.ACTIONS.DOWN)).normalized()
 	if direction.y:
 		velocity.y = direction.y * GLOBAL.PLAYER_SPEED
 	else:

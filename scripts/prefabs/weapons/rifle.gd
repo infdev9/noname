@@ -12,8 +12,7 @@ func _enter_tree() -> void:
 
 
 func shoot():
-	super()
-	if try_spend_ammo(1):
+	if is_working and try_spend_ammo(1):
 		rebound()
 		
 		var bullet: Bullet = BULLET.instantiate() if is_player else BULLET_ENEMY.instantiate()

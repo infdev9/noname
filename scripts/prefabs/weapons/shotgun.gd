@@ -14,8 +14,7 @@ func _enter_tree() -> void:
 
 
 func shoot():
-	super()
-	if try_spend_ammo(5):
+	if is_working and try_spend_ammo(5):
 		rebound()
 		
 		for i in range(-2, 3):

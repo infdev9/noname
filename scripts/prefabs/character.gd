@@ -28,6 +28,7 @@ enum Weapons {
 	SHOTGUN,
 }
 
+var is_blocked: bool
 var angle: float
 
 var current_state: States = States.IDLE
@@ -131,8 +132,19 @@ func look_to() -> void:
 	weapon.set_rotation_degrees(angle)
 
 
+@rpc("any_peer", "unreliable")
 func kill() -> void:
-	hide()
+	$Death.play("default")
+	$Weapon.hide()
+	await get_tree().create_timer(0.2).timeout
+	$Sprite.hide()
+	$CollisionShape2D.set_deferred("disabled", true)
+	is_blocked = true
+	await get_tree().create_timer(3).timeout
+	is_blocked = false
+	$Sprite.show()
+	$Weapon.show()
+	$CollisionShape2D.set_deferred("disabled", false)
 
 
 func init_net(id: int) -> void:

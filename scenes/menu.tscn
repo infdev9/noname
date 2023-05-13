@@ -36,7 +36,8 @@ script/source = "extends Panel
 
 
 func _ready() -> void:
-	$Host/Label.set_text(\"IP: \" + IP.get_local_addresses()[0])
+	$Host/Label.set_text(\"IP: \" + IP.get_local_addresses()[5])
+	print(IP.get_local_addresses()[5])
 
 
 func _on_host_pressed() -> void:
@@ -51,7 +52,7 @@ func _on_join_pressed() -> void:
 
 
 func _on_local_pressed() -> void:
-	Net.init_client(IP.get_local_addresses()[0])
+	Net.init_client(IP.get_local_addresses()[1])
 	Root.change_scene(GLOBAL.SCENES.LOBBY)
 "
 

@@ -9,4 +9,4 @@ texture = ExtResource("1_btlqs")
 script = ExtResource("2_0hasi")
 
 [node name="BulletsSpawnPos" type="Marker2D" parent="." index="2"]
-position = Vector2(128, 0)
+position = Vector2(30, 0)

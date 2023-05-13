@@ -43,12 +43,12 @@ func add_prev_connected_characters(peer_ids: Array) -> void:
 		add_character(peer_id)
 
 
-@rpc("reliable")
+@rpc("any_peer", "reliable")
 func begin_game() -> void:
 	Root.change_scene(GLOBAL.SCENES.GAME)
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(GLOBAL.ACTIONS.INTERACT):
+	if event.is_action_released(GLOBAL.ACTIONS.INTERACT):
 		rpc("begin_game")
 		begin_game()
