@@ -11,10 +11,11 @@ func _enter_tree() -> void:
 	bullet_lifetime = 0.5
 	ammo_in_magazine = 25
 	ammo = ammo_in_magazine
+	max_ammo = 50
 
 
-func shoot():
-	if is_working and try_spend_ammo(5):
+func shoot() -> void:
+	if is_working and !$CheckArea.has_overlapping_bodies() and try_spend_ammo(5):
 		rebound()
 		
 		for i in range(-2, 3):
@@ -24,5 +25,7 @@ func shoot():
 			bullet.set_axis_velocity(Vector2.from_angle(rotation + deg_to_rad(15 * i)) * bullet_acceleration)
 			Root.get_current_scene().get_node("Bullets").add_child(bullet)
 		
+		emit_signal("shot")
 		wait_cooldown()
+	super()
 

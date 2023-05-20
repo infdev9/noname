@@ -2,10 +2,14 @@ class_name Weapon
 extends Sprite2D
 
 
+signal shot
+
+
 const BASE_OFFSET_X = 84
 
 var is_working: bool = true
 var is_player: bool = false
+var has_infinite_ammo: bool = false
 
 var cooldown: float = 0.5
 var reload_time: float = 1
@@ -13,9 +17,9 @@ var recoil: float = 0.4
 var bullet_lifetime: float = 0.5
 var bullet_acceleration: float = 1000
 
-var ammo: int = 9
-var ammo_in_magazine: int = 10
-var max_ammo: int = 100
+var ammo: int = 0
+var ammo_in_magazine: int = 0
+var max_ammo: int = 0
 
 var tween: Tween
 
@@ -27,12 +31,20 @@ func _enter_tree() -> void:
 	is_player = true if get_parent().get_parent() is Player else false
 
 
+func _ready() -> void:
+	if has_infinite_ammo:
+		max_ammo = GLOBAL.INFINITY
+		ammo_in_magazine = GLOBAL.INFINITY
+		ammo = ammo_in_magazine
+
+
 func _on_cooldown_timeout() -> void:
 	is_working = true
 
 
 func shoot() -> void:
-	pass
+	if is_working and ammo == 0:
+		reload()
 
 
 func try_spend_ammo(count: int) -> bool:
@@ -42,9 +54,7 @@ func try_spend_ammo(count: int) -> bool:
 	else:
 		if max_ammo >= ammo_in_magazine:
 			reload()
-			return false
-		else:
-			return false
+		return false
 
 
 func wait_cooldown() -> void:

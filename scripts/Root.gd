@@ -13,11 +13,6 @@ func get_player() -> Player:
 	return get_current_scene().player
 
 
-func append_gui_to_scene() -> void:
-	Gui.set_process_mode(Node.PROCESS_MODE_INHERIT)
-	Gui.show()
-
-
 func change_scene(scene: String) -> void:
 	get_tree().change_scene_to_file(scene)
 

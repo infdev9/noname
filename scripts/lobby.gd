@@ -8,6 +8,7 @@ const PLAYER_PREFAB: PackedScene = preload("res://prefabs/Player.tscn")
 
 
 func _ready() -> void:
+	Gui.show_gui()
 	if Net.is_host:
 		Net.multiplayer_peer.peer_connected.connect(
 			func(new_peer_id):

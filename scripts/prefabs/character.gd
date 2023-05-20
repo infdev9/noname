@@ -31,6 +31,8 @@ enum Weapons {
 var is_blocked: bool
 var angle: float
 
+var speed_modifier: float = 1.0
+
 var current_state: States = States.IDLE
 var current_look: Looking = Looking.DOWN
 var current_weapon: Weapons = Weapons.NONE
@@ -130,6 +132,10 @@ func look_to() -> void:
 		%Sprite.set_z_index(0)
 	
 	weapon.set_rotation_degrees(angle)
+
+
+func boost(function: Callable) -> void:
+	function.call()
 
 
 @rpc("any_peer", "unreliable")

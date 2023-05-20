@@ -9,6 +9,8 @@ const PLAYER_PREFAB: PackedScene = preload("res://prefabs/Player.tscn")
 
 func _ready() -> void:
 	add_prev_connected_characters(Net.connected_peer_ids)
+	player.connect("changed_weapon", Gui.update_weapon)
+	Gui.show_ammo()
 
 
 func add_character(peer_id: int) -> void:
